@@ -9,7 +9,7 @@ $dark_lighter: #1b2564;
 $dark_darker: #000527;
 
 $light: #dfefc9;
-$light_lighter: #eff7e4;
+$light_lighter: #fafdf7;
 $light_darker: #cfdfb5;
 
 $medium: #357a89;
@@ -52,11 +52,74 @@ a {
 	}
 }
 
+h1, h2, h3, h4 {
+	text-transform: uppercase;
+	font-weight: $font_weight_light;
+	color: $medium;
+	margin: 0 0 1rem 0;
+}
+
+h1 {
+	font-size: 3rem;
+}
+
+h2 {
+	font-size: 2rem;
+
+	span {
+		display: block;
+
+		em {
+			font-style: normal;
+			display: inline-block;
+			padding: 0.25rem 0;
+			background-color: $dark_lighter;
+			color: $light_lighter;
+			font-size: 1rem;
+			position: relative;
+
+			&:before {
+				content: '';
+				position: absolute;
+				height: 100%;
+				width: 2rem;
+				top: 0;
+				left: -2rem;
+				background-image: linear-gradient(135deg, transparent 0%, transparent 50%, $dark_lighter 51%, $dark_lighter 100%)
+			}
+
+			&:after {
+				content: '';
+				position: absolute;
+				height: 100%;
+				width: 2rem;
+				top: 0;
+				right: -2rem;
+				background-image: linear-gradient(135deg, $dark_lighter 0%, $dark_lighter 50%, transparent 51%, transparent 100%)
+			}
+		}
+	}
+}
+
+h3 {
+	font-size: 1.5rem;
+}
+
+h4 {
+	font-size: 1.25rem;
+}
+
+p {
+	margin: 0 0 1rem 0;
+}
+
 nav[role="navigation"] {
 	position: fixed;
 	top: 0;
 	width: 100%;
+	z-index: 5;
 	display: flex;
+	transition: all 200ms ease;
 
 	ul {
 		list-style: none;
@@ -81,6 +144,23 @@ nav[role="navigation"] {
 				padding: 1rem;
 				color: $light_lighter;
 				text-decoration: none;
+
+				&:hover {
+					color: $light;
+				}
+			}
+		}
+	}
+
+	&.alt {
+		background-color: $light_lighter;
+		box-shadow: 0 0 1rem 0 color($medium_darker a(50%));
+
+		a {
+			color: $medium;
+
+			&:hover {
+				color: $medium_lighter;
 			}
 		}
 	}
@@ -106,10 +186,58 @@ header[role="banner"] {
 		max-width: $page_max_width;
 		margin: 2rem auto 0 auto;
 		font-size: 1.5rem;
-		text-shadow: 0 0 0.25rem $dark_darker;
+		text-shadow: 0 0 3rem $dark_darker;
 
 		a {
 			color: $light;
 		}
 	}
 }
+
+main[role="main"] {
+	section {
+		& > div {
+			max-width: $page_max_width;
+			margin: 0 auto;
+			display: flex;
+			flex-wrap: wrap;
+
+			article {
+				flex: 1 1 50%;
+				padding: 3rem;
+			}
+
+			& > p {
+				flex: 1 1 100%;
+				text-align: center;
+			}
+		}
+
+		&:nth-of-type(even) {
+			background-color: $light;
+		}
+	}
+}
+
+footer {
+	background-color: $medium;
+	color: $light;
+
+	a {
+		color: $light_lighter;
+	}
+
+	& > div {
+		max-width: $page_max_width;
+		margin: 0 auto;
+		display: flex;
+
+		& > * {
+			flex: 1;
+			padding: 3rem;
+		}
+	}
+}
+
+
+
