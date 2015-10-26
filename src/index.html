@@ -67,13 +67,14 @@
 		</footer>
 		<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
 		<script>
+			var $nav = $('nav[role="navigation"]');
+			var threshold = $('.intro').offset().top - $nav.height();
 			$(window).scroll(function () {
 				var scroll = $(window).scrollTop();
-				var threshold = $(window).height() - 150;
 				if (scroll >= threshold) {
-					$('nav[role="navigation"]').addClass('alt');
+					$nav.addClass('alt');
 				} else {
-					$('nav[role="navigation"]').removeClass('alt');
+					$nav.removeClass('alt');
 				}
 			});
 		</script>

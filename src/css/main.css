@@ -14,7 +14,7 @@ $light_darker: #cfdfb5;
 
 $medium: #357a89;
 $medium_lighter: #498d9b;
-$medium_darker: #246d7d;
+$medium_darker: #226776;
 
 $page_max_width: 960px;
 
@@ -42,6 +42,7 @@ body {
 a {
 	color: $medium;
 	text-decoration: none;
+	transition: color 100ms ease;
 
 	&:hover {
 		color: $medium_lighter;
@@ -49,6 +50,25 @@ a {
 
 	&:active {
 		color: $medium_darker;
+	}
+}
+
+button, [role="button"] {
+	display: inline-block;
+	padding: 0.5rem 0.75rem;
+	border: none;
+	background-color: $medium;
+	color: $light_lighter;
+	text-transform: uppercase;
+	border-radius: 0.25rem;
+	box-shadow: 0 0.25rem 0 $medium_darker;
+	transition: all ease 100ms;
+
+	&:hover {
+		color: $light;
+		box-shadow: none;
+		margin-top: 0.25rem;
+		margin-bottom: -0.25rem;
 	}
 }
 
@@ -201,15 +221,17 @@ main[role="main"] {
 			margin: 0 auto;
 			display: flex;
 			flex-wrap: wrap;
+			padding: 3rem;
 
 			article {
 				flex: 1 1 50%;
-				padding: 3rem;
+				padding: 0 3rem;
 			}
 
 			& > p {
 				flex: 1 1 100%;
 				text-align: center;
+				padding-top: 1rem;
 			}
 		}
 

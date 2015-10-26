@@ -24,6 +24,8 @@ body {
 a {
 	color: #357a89;
 	text-decoration: none;
+	-webkit-transition: color 100ms ease;
+	        transition: color 100ms ease;
 }
 
 a:hover {
@@ -31,7 +33,27 @@ a:hover {
 }
 
 a:active {
-	color: #246d7d;
+	color: #226776;
+}
+
+button, [role="button"] {
+	display: inline-block;
+	padding: 0.5rem 0.75rem;
+	border: none;
+	background-color: #357a89;
+	color: #fafdf7;
+	text-transform: uppercase;
+	border-radius: 0.25rem;
+	box-shadow: 0 0.25rem 0 #226776;
+	-webkit-transition: all ease 100ms;
+	        transition: all ease 100ms;
+}
+
+button:hover, [role="button"]:hover {
+	color: #dfefc9;
+	box-shadow: none;
+	margin-top: 0.25rem;
+	margin-bottom: -0.25rem;
 }
 
 h1, h2, h3, h4 {
@@ -149,7 +171,7 @@ nav[role="navigation"] ul li a:hover {
 
 nav[role="navigation"].alt {
 	background-color: #fafdf7;
-	box-shadow: 0 0 1rem 0 rgba(36, 109, 125, 0.5);
+	box-shadow: 0 0 1rem 0 rgba(34, 103, 118, 0.5);
 }
 
 nav[role="navigation"].alt a {
@@ -198,6 +220,7 @@ main[role="main"] section > div {
 	-webkit-flex-wrap: wrap;
 	    -ms-flex-wrap: wrap;
 	        flex-wrap: wrap;
+	padding: 3rem;
 }
 
 main[role="main"] section > div article {
@@ -205,7 +228,7 @@ main[role="main"] section > div article {
 	-webkit-flex: 1 1 50%;
 	    -ms-flex: 1 1 50%;
 	        flex: 1 1 50%;
-	padding: 3rem;
+	padding: 0 3rem;
 }
 
 main[role="main"] section > div > p {
@@ -214,6 +237,7 @@ main[role="main"] section > div > p {
 	    -ms-flex: 1 1 100%;
 	        flex: 1 1 100%;
 	text-align: center;
+	padding-top: 1rem;
 }
 
 main[role="main"] section:nth-of-type(even) {
