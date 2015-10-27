@@ -21,19 +21,61 @@ body {
 	font-weight: 400;
 }
 
-a {
+a:not([role="button"]) {
 	color: #357a89;
 	text-decoration: none;
 	-webkit-transition: color 100ms ease;
 	        transition: color 100ms ease;
+
+	display: inline-block;
+	-webkit-transform: translateZ(0);
+	        transform: translateZ(0);
+	box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+	-webkit-backface-visibility: hidden;
+	backface-visibility: hidden;
+	-moz-osx-font-smoothing: grayscale;
+	position: relative;
+	-webkit-transition-property: color;
+	        transition-property: color;
+	-webkit-transition-duration: 200ms;
+	        transition-duration: 200ms;
 }
 
-a:hover {
-	color: #498d9b;
+a:not([role="button"]):hover {
+	color: #fafdf7;
 }
 
-a:active {
+a:not([role="button"]):active {
 	color: #226776;
+}
+
+a:not([role="button"]):before {
+	content: '';
+	position: absolute;
+	z-index: -1;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background-color: #498d9b;
+	-webkit-transform: scaleX(0);
+	    -ms-transform: scaleX(0);
+	        transform: scaleX(0);
+	-webkit-transform-origin: 0 50%;
+	    -ms-transform-origin: 0 50%;
+	        transform-origin: 0 50%;
+	-webkit-transition-property: -webkit-transform;
+	        transition-property: transform;
+	-webkit-transition-duration: 200ms;
+	        transition-duration: 200ms;
+	-webkit-transition-timing-function: ease-out;
+	        transition-timing-function: ease-out;
+}
+
+a:not([role="button"]):hover:before, a:not([role="button"]):focus:before, a:not([role="button"]):active:before {
+	-webkit-transform: scaleX(1);
+	    -ms-transform: scaleX(1);
+	        transform: scaleX(1);
 }
 
 button, [role="button"] {
@@ -43,6 +85,7 @@ button, [role="button"] {
 	background-color: #357a89;
 	color: #fafdf7;
 	text-transform: uppercase;
+	text-decoration: none;
 	border-radius: 0.25rem;
 	box-shadow: 0 0.25rem 0 #226776;
 	-webkit-transition: all ease 100ms;
@@ -179,7 +222,7 @@ nav[role="navigation"].alt a {
 }
 
 nav[role="navigation"].alt a:hover {
-	color: #498d9b;
+	color: #fafdf7;
 }
 
 header[role="banner"] {
@@ -271,7 +314,7 @@ footer > div > * {
 	padding: 1rem;
 }
 
-footer a {
+footer a:not([role="button"]) {
 	color: #fafdf7;
 }
 

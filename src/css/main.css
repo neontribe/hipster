@@ -39,17 +39,47 @@ body {
 	font-weight: $font_weight_normal;
 }
 
-a {
+a:not([role="button"]) {
 	color: $medium;
 	text-decoration: none;
 	transition: color 100ms ease;
 
+	display: inline-block;
+	transform: translateZ(0);
+	box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+	-webkit-backface-visibility: hidden;
+	backface-visibility: hidden;
+	-moz-osx-font-smoothing: grayscale;
+	position: relative;
+	transition-property: color;
+	transition-duration: 200ms;
+
 	&:hover {
-		color: $medium_lighter;
+		color: $light_lighter;
 	}
 
 	&:active {
 		color: $medium_darker;
+	}
+
+	&:before {
+		content: '';
+		position: absolute;
+		z-index: -1;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		background-color: $medium_lighter;
+		transform: scaleX(0);
+		transform-origin: 0 50%;
+		transition-property: transform;
+		transition-duration: 200ms;
+		transition-timing-function: ease-out;
+	}
+
+	&:hover:before, &:focus:before, &:active:before {
+		transform: scaleX(1);
 	}
 }
 
@@ -60,6 +90,7 @@ button, [role="button"] {
 	background-color: $medium;
 	color: $light_lighter;
 	text-transform: uppercase;
+	text-decoration: none;
 	border-radius: 0.25rem;
 	box-shadow: 0 0.25rem 0 $medium_darker;
 	transition: all ease 100ms;
@@ -180,7 +211,7 @@ nav[role="navigation"] {
 			color: $medium;
 
 			&:hover {
-				color: $medium_lighter;
+				color: $light_lighter;
 			}
 		}
 	}
@@ -258,7 +289,7 @@ footer {
 		}
 	}
 
-	a {
+	a:not([role="button"]) {
 		color: $light_lighter;
 	}
 
