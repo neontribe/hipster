@@ -77,7 +77,7 @@
 		<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
 		<script>
 			var $nav = $('nav[role="navigation"]');
-			var threshold = $('.intro').offset().top - $nav.height();
+			var threshold = $('header[role="banner"] img').offset().top - $nav.height();
 			$(window).scroll(function () {
 				var scroll = $(window).scrollTop();
 				if (scroll >= threshold) {
