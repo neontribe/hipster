@@ -412,11 +412,26 @@ figure img {
  * Media Queries
  */
 
+@media (max-width: 700px) {
+	header[role="banner"] p {
+		font-size: 1rem;
+	}
+}
+
 @media (max-width: 600px) {
 	html {
 		font-size: 16px;
 	}
+
+	header[role="banner"] p {
+		font-size: 1rem;
+	}
 }
 
+@media (max-height: 400px) {
+	header[role="banner"] p {
+		font-size: 1rem;
+	}
+}
 
 
