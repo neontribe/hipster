@@ -405,4 +405,20 @@ figure {
 	}
 }
 
+@media (max-width: 520px) {
+	nav[role="navigation"] {
+		display: block;
+		text-align: center;
+		background-color: $light_lighter;
+		box-shadow: 0 0 1rem 0 color($medium_darker a(50%));
+
+		a {
+			color: $medium;
+
+			&:hover {
+				color: $light_lighter;
+			}
+		}
+	}
+}
 

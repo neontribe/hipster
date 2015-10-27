@@ -434,4 +434,18 @@ figure img {
 	}
 }
 
+@media (max-width: 520px) {
+	nav[role="navigation"] {
+		display: block;
+		text-align: center;
+		background-color: #fafdf7;
+		box-shadow: 0 0 1rem 0 rgba(34, 103, 118, 0.5);
+	}
+	nav[role="navigation"] a {
+		color: #357a89;
+	}
+	nav[role="navigation"] a:hover {
+		color: #fafdf7;
+	}
+}
 
