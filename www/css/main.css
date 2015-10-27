@@ -232,6 +232,7 @@ nav[role="navigation"] ul li {
 nav[role="navigation"] ul li a {
 	display: inline-block;
 	padding: 1rem;
+	width: 100%;
 	color: #fafdf7;
 	text-decoration: none;
 }
@@ -426,6 +427,28 @@ figure img {
 	header[role="banner"] p {
 		font-size: 1rem;
 	}
+
+	main[role="main"] section > div {
+		display: block;
+	}
+
+	footer > div {
+		display: block;
+		text-align: center;
+	}
+
+	footer > div figure {
+		padding: 0;
+	}
+
+	footer > div figure img {
+		max-width: 100%;
+		max-height: 8rem;
+	}
+
+	footer > div address {
+		text-align: center;
+	}
 }
 
 @media (max-height: 400px) {
@@ -441,11 +464,21 @@ figure img {
 		background-color: #fafdf7;
 		box-shadow: 0 0 1rem 0 rgba(34, 103, 118, 0.5);
 	}
-	nav[role="navigation"] a {
+	nav[role="navigation"] ul li a {
 		color: #357a89;
 	}
-	nav[role="navigation"] a:hover {
+	nav[role="navigation"] ul li a:hover {
 		color: #fafdf7;
 	}
 }
+
+@media (max-width: 400px) {
+	nav[role="navigation"] ul li a {
+		font-size: 1rem;
+		padding: 0.5rem;
+	}
+}
+
+
+
 

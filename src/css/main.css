@@ -220,6 +220,7 @@ nav[role="navigation"] {
 			a {
 				display: inline-block;
 				padding: 1rem;
+				width: 100%;
 				color: $light_lighter;
 				text-decoration: none;
 
@@ -395,6 +396,34 @@ figure {
 			font-size: 1rem;
 		}
 	}
+
+	main[role="main"] {
+		section {
+			& > div {
+				display: block;
+			}
+		}
+	}
+
+	footer {
+		& > div {
+			display: block;
+			text-align: center;
+
+			figure {
+				padding: 0;
+
+				img {
+					max-width: 100%;
+					max-height: 8rem;
+				}
+			}
+
+			address {
+				text-align: center;
+			}
+		}
+	}
 }
 
 @media (max-height: 400px) {
@@ -412,7 +441,7 @@ figure {
 		background-color: $light_lighter;
 		box-shadow: 0 0 1rem 0 color($medium_darker a(50%));
 
-		a {
+		ul li a {
 			color: $medium;
 
 			&:hover {
@@ -421,4 +450,20 @@ figure {
 		}
 	}
 }
+
+@media (max-width: 400px) {
+	nav[role="navigation"] {
+		ul {
+			li {
+				a {
+					font-size: 1rem;
+					padding: 0.5rem;
+				}
+			}
+		}
+	}
+}
+
+
+
 
