@@ -426,6 +426,7 @@ figure {
 	}
 }
 
+/* --- Height Based --- */
 @media (max-height: 400px) {
 	header[role="banner"] {
 		p {
@@ -433,6 +434,7 @@ figure {
 		}
 	}
 }
+/* -------------------- */
 
 @media (max-width: 520px) {
 	nav[role="navigation"] {
@@ -449,6 +451,14 @@ figure {
 			}
 		}
 	}
+
+	main[role="main"] {
+		section {
+			& > div {
+				padding: 1rem;
+			}
+		}
+	}
 }
 
 @media (max-width: 400px) {
@@ -458,6 +468,16 @@ figure {
 				a {
 					font-size: 1rem;
 					padding: 0.5rem;
+				}
+			}
+		}
+	}
+
+	main[role="main"] {
+		section {
+			& > div {
+				article {
+					padding: 0 1.5rem;
 				}
 			}
 		}

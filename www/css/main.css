@@ -451,11 +451,13 @@ figure img {
 	}
 }
 
+/* --- Height Based --- */
 @media (max-height: 400px) {
 	header[role="banner"] p {
 		font-size: 1rem;
 	}
 }
+/* -------------------- */
 
 @media (max-width: 520px) {
 	nav[role="navigation"] {
@@ -470,12 +472,20 @@ figure img {
 	nav[role="navigation"] ul li a:hover {
 		color: #fafdf7;
 	}
+
+	main[role="main"] section > div {
+		padding: 1rem;
+	}
 }
 
 @media (max-width: 400px) {
 	nav[role="navigation"] ul li a {
 		font-size: 1rem;
 		padding: 0.5rem;
+	}
+
+	main[role="main"] section > div article {
+		padding: 0 1.5rem;
 	}
 }
 
