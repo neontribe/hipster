@@ -46,7 +46,7 @@ a:not([role="button"]):hover {
 }
 
 a:not([role="button"]):active {
-	color: #226776;
+	color: #cfdfb5;
 }
 
 a:not([role="button"]):before {
@@ -272,6 +272,11 @@ main[role="main"] section > div article {
 	    -ms-flex: 1 1 50%;
 	        flex: 1 1 50%;
 	padding: 0 3rem;
+}
+
+main[role="main"] section > div article img {
+	max-width: 100%;
+	border: 0.25rem solid #fafdf7;
 }
 
 main[role="main"] section > div > p {
