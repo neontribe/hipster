@@ -477,6 +477,12 @@ figure img {
 	nav[role="navigation"] ul li a:hover {
 		color: #fafdf7;
 	}
+	nav[role="navigation"] ul:nth-of-type(1) li a {
+		margin-bottom: -0.5rem;
+	}
+	nav[role="navigation"] ul:nth-of-type(2) li a {
+		margin-top: -0.5rem;
+	}
 
 	main[role="main"] section > div {
 		padding: 1rem;
@@ -487,6 +493,12 @@ figure img {
 	nav[role="navigation"] ul li a {
 		font-size: 1rem;
 		padding: 0.5rem;
+	}
+	nav[role="navigation"] ul:nth-of-type(1) li a {
+		margin-bottom: -0.25rem;
+	}
+	nav[role="navigation"] ul:nth-of-type(2) li a {
+		margin-top: -0.25rem;
 	}
 
 	main[role="main"] section > div article {
