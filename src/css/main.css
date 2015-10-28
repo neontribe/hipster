@@ -220,7 +220,7 @@ nav[role="navigation"] {
 		}
 
 		li {
-			flex: 1;
+			flex: 1 1 10rem;
 
 			a {
 				display: inline-block;
@@ -261,7 +261,7 @@ header[role="banner"] {
 	background-image: url(../img/bokeh.jpg);
 	background-repeat: no-repeat;
 	background-size: cover;
-	padding: 4rem;
+	padding: 5rem 2rem 3rem 2rem;
 	text-align: center;
 	display: flex;
 	flex-direction: column;
