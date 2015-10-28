@@ -173,6 +173,11 @@ h2 {
 			}
 		}
 	}
+
+	a {
+		padding: 0.25rem 0.5rem;
+		margin: 0 -0.5rem;
+	}
 }
 
 h3 {
@@ -215,11 +220,12 @@ nav[role="navigation"] {
 		}
 
 		li {
-			flex: 1;
+			flex: 1 1 10rem;
 
 			a {
 				display: inline-block;
 				padding: 1rem;
+				width: 100%;
 				color: $light_lighter;
 				text-decoration: none;
 
@@ -255,7 +261,7 @@ header[role="banner"] {
 	background-image: url(../img/bokeh.jpg);
 	background-repeat: no-repeat;
 	background-size: cover;
-	padding: 4rem;
+	padding: 5rem 2rem 3rem 2rem;
 	text-align: center;
 	display: flex;
 	flex-direction: column;
@@ -395,8 +401,37 @@ figure {
 			font-size: 1rem;
 		}
 	}
+
+	main[role="main"] {
+		section {
+			& > div {
+				display: block;
+			}
+		}
+	}
+
+	footer {
+		& > div {
+			display: block;
+			text-align: center;
+
+			figure {
+				padding: 0;
+
+				img {
+					max-width: 100%;
+					max-height: 8rem;
+				}
+			}
+
+			address {
+				text-align: center;
+			}
+		}
+	}
 }
 
+/* --- Height Based --- */
 @media (max-height: 400px) {
 	header[role="banner"] {
 		p {
@@ -404,6 +439,7 @@ figure {
 		}
 	}
 }
+/* -------------------- */
 
 @media (max-width: 520px) {
 	nav[role="navigation"] {
@@ -412,13 +448,75 @@ figure {
 		background-color: $light_lighter;
 		box-shadow: 0 0 1rem 0 color($medium_darker a(50%));
 
-		a {
-			color: $medium;
+		ul {
+			li {
+				a {
+					color: $medium;
 
-			&:hover {
-				color: $light_lighter;
+					&:hover {
+						color: $light_lighter;
+					}
+				}
+			}
+		}
+
+		ul:nth-of-type(1) {
+			li a {
+				margin-bottom: -0.5rem;
+			}
+		}
+
+		ul:nth-of-type(2) {
+			li a {
+				margin-top: -0.5rem;
+			}
+		}
+	}
+
+	main[role="main"] {
+		section {
+			& > div {
+				padding: 1rem;
 			}
 		}
 	}
 }
+
+@media (max-width: 400px) {
+	nav[role="navigation"] {
+		ul {
+			li {
+				a {
+					font-size: 1rem;
+					padding: 0.5rem;
+				}
+			}
+		}
+
+		ul:nth-of-type(1) {
+			li a {
+				margin-bottom: -0.25rem;
+			}
+		}
+
+		ul:nth-of-type(2) {
+			li a {
+				margin-top: -0.25rem;
+			}
+		}
+	}
+
+	main[role="main"] {
+		section {
+			& > div {
+				article {
+					padding: 0 1.5rem;
+				}
+			}
+		}
+	}
+}
+
+
+
 
