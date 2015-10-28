@@ -1,6 +1,7 @@
 var gulp = require('gulp');
 var postcss = require('gulp-postcss');
 var imagemin = require('gulp-imagemin');
+var minimist = require('minimist');
 
 var path = {
 	CSS: './src/css/**/*.css',
@@ -67,3 +68,21 @@ gulp.task('default', ['copy', 'css', 'images', 'fonts'], function () {
 	gulp.watch(path.IMAGES, ['images']);
 	gulp.watch(path.FONTS, ['fonts']);
 });
+
+//
+// Export/copy production files to target directory
+// e.g. gulp export --target ../neontribe-ghost/content/themes/hipster
+//
+
+gulp.task('export', ['build'], function () {
+	var options = minimist(process.argv.slice(2));
+
+	if (!options.target) {
+		console.error('Must specify target export directory.');
+		return;
+	}
+
+	return gulp.src(path.DEST_DIR + '/**/*')
+		.pipe(gulp.dest(options.target));
+});
+
