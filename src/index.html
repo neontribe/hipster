@@ -10,7 +10,7 @@
 		<link rel="stylesheet" href="css/main.css">
 	</head>
 	<body>
-		<nav role="navigation">
+		<nav role="navigation" id="top-nav">
 			<ul class="home">
 				<li><a href="/">Neontribe</a></li>
 			</ul>
@@ -21,7 +21,7 @@
 				<li><a href="/blog">Blog</a></li>
 			</ul>
 		</nav>
-		<header role="banner">
+		<header role="banner" class="homepage">
 			<img src="img/neontribe_logo_vintage_light.svg" alt="The Neontribe logo as a vintage badge">
 			<p class="intro">Neontribe is a software development company. We're agile and user-centered in our design and development work, producing websites and apps. If that sounds like what you need, email us at <a href="mailto:info@neontribe.co.uk">info@neontribe.co.uk</a>.</p>
 		</header>
@@ -36,7 +36,12 @@
 						<h2><span><em>From the Blog</em></span><a href="#">Cordova File Plugin Examples</a></h2>
 						<p>I found myself in need of writing potentially large amounts of data to the file system in a Cordova app I'm working on. Naturally, I reached for the Cordova File Plugin, as a handful of cursory Google searches revealed it to be the de facto plugin for this task. However:…</p>
 					</article>
-					<p><a href="/blog" role="button">More from the Blog</a></p>
+					<nav class="pagination" role="navigation">
+						<a class="newer-posts" href="/" role="button">← Newer Posts</a>
+						<span class="page-number">Page 2 of 4</span>
+						<a class="older-posts" href="/page/3/" role="button">Older Posts →</a>
+					</nav>
+					<!-- <p><a href="/blog" role="button">More from the Blog</a></p> -->
 				</div>
 			</section>
 			<section>
