@@ -451,8 +451,10 @@ figure {
 pre {
 	max-width: 100%;
 	overflow-x: auto;
+	font-size: 0.75rem;
 
-	code {
+	&[class*="language-"] {
+		margin: 0 0 1rem 0;
 	}
 }
 

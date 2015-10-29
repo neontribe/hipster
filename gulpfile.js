@@ -1,12 +1,14 @@
 var gulp = require('gulp');
 var postcss = require('gulp-postcss');
 var imagemin = require('gulp-imagemin');
+var concat = require('gulp-concat');
 var minimist = require('minimist');
 
 var path = {
-	CSS: './src/css/**/*.css',
+	CSS: ['./src/css/prism.css', './src/css/main.css'],
 	IMAGES: './src/img/**/*.{png,jpg,gif,svg}',
 	FONTS: './src/css/fonts/*.{eot,svg,ttf,woff,woff2}',
+	JS: './src/js/**/*.js',
 	TO_COPY: ['src/*.{html,js,ico,xml,png,json}'],
 	DEST_DIR: './www'
 };
@@ -26,6 +28,7 @@ gulp.task('copy', function () {
 
 gulp.task('css', function () {
 	return gulp.src(path.CSS)
+		.pipe(concat('main.css'))
 		.pipe(postcss([
 			require('precss')(),
 			require('autoprefixer')()
@@ -53,16 +56,26 @@ gulp.task('fonts', function () {
 });
 
 //
+// Javascript
+//
+
+gulp.task('js', function () {
+	return gulp.src(path.JS)
+		.pipe(concat('bundle.js'))
+		.pipe(gulp.dest(path.DEST_DIR + '/js'));
+});
+
+//
 // One-time build
 //
 
-gulp.task('build', ['copy', 'css', 'images', 'fonts']);
+gulp.task('build', ['copy', 'css', 'images', 'fonts', 'js']);
 
 //
 // Like build, but with file watching
 //
 
-gulp.task('default', ['copy', 'css', 'images', 'fonts'], function () {
+gulp.task('default', ['copy', 'css', 'images', 'fonts', 'js'], function () {
 	gulp.watch(path.TO_COPY, ['copy']);
 	gulp.watch(path.CSS, ['css']);
 	gulp.watch(path.IMAGES, ['images']);

@@ -80,17 +80,6 @@
             </div>
 		</footer>
 		<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
-		<script>
-			var $nav = $('nav[role="navigation"]');
-			var threshold = $('header[role="banner"] img').offset().top - $nav.height();
-			$(window).scroll(function () {
-				var scroll = $(window).scrollTop();
-				if (scroll >= threshold) {
-					$nav.addClass('alt');
-				} else {
-					$nav.removeClass('alt');
-				}
-			});
-		</script>
+		<script src="js/bundle.js"></script>
 	</body>
 </html>

@@ -277,17 +277,6 @@ cordova.file.append(fileName, {}, successHandler, errorHandler); // with { creat
 			</div>
 		</footer>
 		<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
-		<script>
-			var $nav = $('nav#top-nav');
-			var threshold = 40;
-			$(window).scroll(function () {
-				var scroll = $(window).scrollTop();
-				if (scroll >= threshold) {
-					$nav.addClass('alt');
-				} else {
-					$nav.removeClass('alt');
-				}
-			});
-		</script>
+		<script src="js/bundle.js"></script>
 	</body>
 </html>
