@@ -436,6 +436,10 @@ footer {
 			max-width: 65%;
 		}
 	}
+
+	img.social {
+		max-height: 2rem;
+	}
 }
 
 /*

@@ -586,6 +586,10 @@ footer figure img {
 	max-width: 65%;
 }
 
+footer img.social {
+	max-height: 2rem;
+}
+
 /*
  * People Page
  */

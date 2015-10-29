@@ -80,6 +80,7 @@ gulp.task('default', ['copy', 'css', 'images', 'fonts', 'js'], function () {
 	gulp.watch(path.CSS, ['css']);
 	gulp.watch(path.IMAGES, ['images']);
 	gulp.watch(path.FONTS, ['fonts']);
+	gulp.watch(path.JS, ['js']);
 });
 
 //
