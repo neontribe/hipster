@@ -226,7 +226,7 @@ button:hover, [role="button"]:hover {
 h1, h2, h3, h4 {
 	text-transform: uppercase;
 	font-weight: 200;
-	color: #357a89;
+	color: #226776;
 	margin: 0 0 1rem 0;
 }
 
@@ -520,7 +520,7 @@ main[role="main"] section > div article img {
 	border: 0.25rem solid #fafdf7;
 }
 
-main[role="main"] section > div > p {
+main[role="main"] section > div > p.more {
 	-webkit-box-flex: 1;
 	-webkit-flex: 1 1 100%;
 	    -ms-flex: 1 1 100%;
@@ -652,6 +652,10 @@ code {
 	display: inline-block;
 	max-width: 100%;
 	overflow-x: auto;
+}
+
+.noflex {
+	display: block !important;
 }
 
 /*
