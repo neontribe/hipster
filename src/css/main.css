@@ -470,6 +470,131 @@ footer {
 }
 
 /*
+ * Process Page
+ */
+
+.process {
+	width: 100%;
+	margin-top: 2rem;
+
+	.big-blob-container {
+		position: relative;
+		z-index: 1;
+
+		.big-blob {
+			background-color: $light;
+			background-repeat: no-repeat;
+			background-position: center 2rem;
+			background-size: 16rem;
+			border-radius: 50%;
+			text-align: center;
+			padding: 12rem 2rem 3rem 2rem;
+
+			ul {
+				list-style: none;
+				margin: 0 0 1rem 0;
+				padding: 0;
+
+				li {
+					display: inline-block;
+
+					&:not(:last-of-type) {
+						margin-right: 0.5rem;
+
+						&:after {
+							content: '●';
+							margin-left: 0.5rem;
+							color: $light_darker;
+						}
+					}
+				}
+			}
+
+			p:not(:first-of-type) {
+				display: none;
+			}
+
+			&.blob-discovery {
+				background-image: url(../img/process/p_discovery.svg);
+			}
+
+			&.blob-development {
+				background-image: url(../img/process/p_development.svg);
+			}
+
+			&.blob-delivery {
+				background-image: url(../img/process/p_delivery.svg);
+			}
+
+			&[data-subprocess="personas"] {
+				background-image: url(../img/process/p_personas.svg);
+			}
+
+			&[data-subprocess="user-stories"] {
+				background-image: url(../img/process/p_user-stories.svg);
+			}
+
+			&[data-subprocess="prototyping"] {
+				background-image: url(../img/process/p_prototyping.svg);
+			}
+
+			&[data-subprocess="prioritisation"] {
+				background-image: url(../img/process/p_prioritisation.svg);
+			}
+
+			&[data-subprocess="coding"] {
+				background-image: url(../img/process/p_coding.svg);
+			}
+
+			&[data-subprocess="testing"] {
+				background-image: url(../img/process/p_testing.svg);
+			}
+
+			&[data-subprocess="visual-design"] {
+				background-image: url(../img/process/p_visual-design.svg);
+			}
+
+			&[data-subprocess="launch"] {
+				background-image: url(images/p_launch.svg);
+			}
+
+			&[data-subprocess="measurement"] {
+				background-image: url(images/p_measurement.svg);
+			}
+
+			&[data-subprocess="improvement"] {
+				background-image: url(images/p_improvement.svg);
+			}
+		}
+	}
+
+	.divider {
+		background-color: $light;
+		width: 8rem;
+		height: 4rem;
+		margin: -2px auto;
+		position: relative;
+
+		&:before, &:after {
+			content: ' ';
+			position: absolute;
+			width: 4rem;
+			height: 4rem;
+			background-color: $light_lighter;
+			border-radius: 50%;
+		}
+
+		&:before {
+			left: -2rem;
+		}
+
+		&:after {
+			right: -2rem;
+		}
+	}
+}
+
+/*
  * Miscellaneous
  */
 

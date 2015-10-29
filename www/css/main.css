@@ -629,6 +629,131 @@ footer img.social {
 }
 
 /*
+ * Process Page
+ */
+
+.process {
+	width: 100%;
+	margin-top: 2rem;
+}
+
+.process .big-blob-container {
+	position: relative;
+	z-index: 1;
+}
+
+.process .big-blob-container .big-blob {
+	background-color: #dfefc9;
+	background-repeat: no-repeat;
+	background-position: center 2rem;
+	background-size: 16rem;
+	border-radius: 50%;
+	text-align: center;
+	padding: 12rem 2rem 3rem 2rem;
+}
+
+.process .big-blob-container .big-blob ul {
+	list-style: none;
+	margin: 0 0 1rem 0;
+	padding: 0;
+}
+
+.process .big-blob-container .big-blob ul li {
+	display: inline-block;
+}
+
+.process .big-blob-container .big-blob ul li:not(:last-of-type) {
+	margin-right: 0.5rem;
+}
+
+.process .big-blob-container .big-blob ul li:not(:last-of-type):after {
+	content: '●';
+	margin-left: 0.5rem;
+	color: #cfdfb5;
+}
+
+.process .big-blob-container .big-blob p:not(:first-of-type) {
+	display: none;
+}
+
+.process .big-blob-container .big-blob.blob-discovery {
+	background-image: url(../img/process/p_discovery.svg);
+}
+
+.process .big-blob-container .big-blob.blob-development {
+	background-image: url(../img/process/p_development.svg);
+}
+
+.process .big-blob-container .big-blob.blob-delivery {
+	background-image: url(../img/process/p_delivery.svg);
+}
+
+.process .big-blob-container .big-blob[data-subprocess="personas"] {
+	background-image: url(../img/process/p_personas.svg);
+}
+
+.process .big-blob-container .big-blob[data-subprocess="user-stories"] {
+	background-image: url(../img/process/p_user-stories.svg);
+}
+
+.process .big-blob-container .big-blob[data-subprocess="prototyping"] {
+	background-image: url(../img/process/p_prototyping.svg);
+}
+
+.process .big-blob-container .big-blob[data-subprocess="prioritisation"] {
+	background-image: url(../img/process/p_prioritisation.svg);
+}
+
+.process .big-blob-container .big-blob[data-subprocess="coding"] {
+	background-image: url(../img/process/p_coding.svg);
+}
+
+.process .big-blob-container .big-blob[data-subprocess="testing"] {
+	background-image: url(../img/process/p_testing.svg);
+}
+
+.process .big-blob-container .big-blob[data-subprocess="visual-design"] {
+	background-image: url(../img/process/p_visual-design.svg);
+}
+
+.process .big-blob-container .big-blob[data-subprocess="launch"] {
+	background-image: url(images/p_launch.svg);
+}
+
+.process .big-blob-container .big-blob[data-subprocess="measurement"] {
+	background-image: url(images/p_measurement.svg);
+}
+
+.process .big-blob-container .big-blob[data-subprocess="improvement"] {
+	background-image: url(images/p_improvement.svg);
+}
+
+.process .divider {
+	background-color: #dfefc9;
+	width: 8rem;
+	height: 4rem;
+	margin: -2px auto;
+	position: relative;
+}
+
+.process .divider:before, .process .divider:after {
+	content: ' ';
+	position: absolute;
+	width: 4rem;
+	height: 4rem;
+	background-color: #fafdf7;
+	border-radius: 50%;
+}
+
+.process .divider:before {
+	left: -2rem;
+}
+
+.process .divider:after {
+	right: -2rem;
+}
+
+/*
  * Miscellaneous
  */
 
