@@ -458,6 +458,12 @@ pre {
 	}
 }
 
+code {
+	display: inline-block;
+	max-width: 100%;
+	overflow-x: auto;
+}
+
 /*
  * Media Queries
  */
@@ -552,6 +558,10 @@ pre {
 		}
 	}
 
+	header.post {
+		padding-top: 8rem;
+	}
+
 	main[role="main"] {
 		section {
 			& > div {
@@ -595,6 +605,22 @@ pre {
 
 		.page-number {
 			padding: 1rem;
+		}
+	}
+
+	header.post {
+		padding-top: 6rem;
+
+		h1 {
+			font-size: 2rem;
+		}
+	}
+
+	.meta {
+		address {
+			img {
+				max-height: 6rem;
+			}
 		}
 	}
 

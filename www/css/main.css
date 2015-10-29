@@ -606,6 +606,12 @@ pre[class*="language-"] {
 	margin: 0 0 1rem 0;
 }
 
+code {
+	display: inline-block;
+	max-width: 100%;
+	overflow-x: auto;
+}
+
 /*
  * Media Queries
  */
@@ -676,6 +682,10 @@ pre[class*="language-"] {
 		margin-top: -0.5rem;
 	}
 
+	header.post {
+		padding-top: 8rem;
+	}
+
 	main[role="main"] section > div {
 		padding: 1rem;
 	}
@@ -704,6 +714,18 @@ pre[class*="language-"] {
 
 	nav.pagination .page-number {
 		padding: 1rem;
+	}
+
+	header.post {
+		padding-top: 6rem;
+	}
+
+	header.post h1 {
+		font-size: 2rem;
+	}
+
+	.meta address img {
+		max-height: 6rem;
 	}
 
 	main[role="main"] section > div article {
