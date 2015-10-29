@@ -308,6 +308,52 @@ header.blog {
 	background-size: cover;
 }
 
+header.post {
+	width: 100%;
+	min-height: 8rem;
+	background-color: $dark;
+	background-image: $hero_img;
+	background-repeat: no-repeat;
+	background-size: cover;
+	padding: 5rem 2rem 5rem 2rem;
+
+	h1 {
+		max-width: $page_max_width;
+		color: $light;
+		margin: 0 auto;
+		text-shadow: 0 0 3rem $dark_darker;
+	}
+}
+
+.meta {
+	text-align: center;
+	margin-top: -2rem;
+
+	address {
+		font-style: normal;
+
+		img {
+			max-height: 8rem;
+			border-radius: 50%;
+			box-shadow: 0 0 0 1rem $light_lighter;
+		}
+
+		span {
+			display: block;
+		}
+
+		& > a:before {
+			transform: scaleX(1);
+			transform-origin: 50% 54%;
+			border-radius: 50%;
+		}
+
+		& > a:hover:before, & > a:focus:before, & > a:active:before {
+			transform: scale(1.35, 1.35);
+		}
+	}
+}
+
 /*
  * Main, Sections, and Articles
  */
@@ -399,6 +445,14 @@ figure {
 
 	img {
 		max-width: 100%;
+	}
+}
+
+pre {
+	max-width: 100%;
+	overflow-x: auto;
+
+	code {
 	}
 }
 

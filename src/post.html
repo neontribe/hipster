@@ -1,0 +1,293 @@
+<!doctype html>
+<!--[if IE 8]> <html lang="en-GB" class="no-js ie lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html lang="en-GB" class="no-js"> <!--<![endif]-->
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<title>Cordova File Plugin Examples</title>
+		<meta name="description" content="">
+		<meta name="viewport" content="width=device-width">
+		<link rel="stylesheet" href="css/main.css">
+		<link rel="canonical" href="http://neontribe.co.uk/cordova-file-plugin-examples/" />
+	</head>
+	<body class="post-template">
+		<nav role="navigation" id="top-nav">
+			<ul class="home">
+				<li><a href="/">Neontribe</a></li>
+			</ul>
+			<ul>
+				<li><a href="/process">Process</a></li>
+				<li><a href="/people">People</a></li>
+				<li><a href="/projects">Projects</a></li>
+				<li><a href="/#hp-blog">Blog</a></li>
+			</ul>
+		</nav>
+
+<header role="banner" class="post">
+	<h1>Cordova File Plugin Examples</h1>
+</header>
+<div class="meta">
+	<address class="author">
+		<a href="/author/frank-reding/"><img src="img/frank.jpg" alt="Frank Reding's Picture"></a>
+		<span>By <a rel="author" href="/author/frank-reding/">Frank Reding</a></span>
+	</address>
+	<p><time datetime="2015-08-11">11 Aug 2015</time></p>
+	<p><a href="https://twitter.com/share?url=http://neontribe.co.uk/cordova-file-plugin-examples/&text=Cordova File Plugin Examples" target="_blank" role="button">Tweet</a></p>
+</div>
+<main role="main">
+	<section>
+		<div>
+			<article>
+				<div>
+					<p>I found myself in need of writing potentially large amounts of data to the file system in a Cordova app I'm working on. Naturally, I reached for the <a href="https://github.com/apache/cordova-plugin-file">Cordova File Plugin</a>, as a handful of cursory Google searches revealed it to be the <em>de facto</em> plugin for this task. However: its documentation, while talking about the plugin's quirks, is lacking in examples, the main <a href="http://www.html5rocks.com/en/tutorials/file/filesystem/">blog post it points to for usage</a> is old, and not all of it is relevant to the plugin. In this post, I aim to detail what I have learned, to make it easier for other people to get started with this useful plugin.</p>
+
+<h2 id="theapihasit">The API Has It</h2>
+
+<p>A great API is simple, and a joy to work with. Here is an example:</p>
+
+<pre><code class="language-javascript">localStorage.setItem('myKey', JSON.stringify({ my: 'data' }, null, '\t'));
+
+var data = localStorage.getItem('myKey');
+if (data) {
+	data = JSON.parse(data);
+}
+</code></pre>
+
+<p>Now, admittedly, it's a bit of a shame that the object to JSON conversion isn't done automatically, but all in all, the localStorage API is succint and developer friendly. With the Cordova File Plugin, things get more complicated.</p>
+
+<h2 id="html5fileapietal">HTML5 File API Et Al</h2>
+
+<p>The File Plugin implements the <a href="http://www.w3.org/TR/FileAPI/">HTML5 File API</a>, plus several others, many of which are since defunct. The result is a very versatile plugin, with low-level access to much functionality. The flip-side is that basic read/write operations (arguably the lion's share of all use cases), are not obvious, nor their usage consistent.</p>
+
+<p>As I mentioned above, the <a href="http://www.html5rocks.com/en/tutorials/file/filesystem/">HTML5 Rocks FileSystem</a> article is linked to for usage examples. That article concerns itself with how one would use the API in a browser. What it doesn't say in that article, or in the plugin documentation, is that the plugin takes care of some of the boilerplate you have to contend with when trying to use the File API in a browser.</p>
+
+<h2 id="caseinpoint">Case In Point</h2>
+
+<p>In a browser, the File API requires you to:</p>
+
+<ol>
+<li>request a filesystem,  </li>
+<li>specify whether it is to be temporary, or persistent,  </li>
+<li>specify its size,  </li>
+<li>specify success and error handlers for this request.</li>
+</ol>
+
+<pre><code class="language-javascript">function onInitFs(fs) {
+	console.log('Opened file system: ' + fs.name);
+}
+
+window.requestFileSystem = window.requestFileSystem || window.webkitRequestFileSystem;
+window.requestFileSystem(window.PERSISTENT, 50*1024*1024 /*50MB*/, onInitFs, errorHandler);
+</code></pre>
+
+<p>Furthermore, if you requested a persistent filesystem, you also need to request storage quota from the user:</p>
+
+<pre><code class="language-javascript">window.webkitStorageInfo.requestQuota(PERSISTENT, 1024*1024, function (grantedBytes) {
+	window.requestFileSystem(window.PERSISTENT, grantedBytes, onInitFs, errorHandler);
+}, function (e) {
+	console.log('Error', e);
+});
+</code></pre>
+
+<h2 id="theimportantpart">The Important Part</h2>
+
+<p>Here is what neither the HTML5 Rocks article (sensibly, since its concern is the browser API), nor the <a href="https://github.com/apache/cordova-plugin-file#cordova-plugin-file">plugin documentation</a>, nor some of the <a href="http://stackoverflow.com/questions/22336352/how-do-you-store-a-file-locally-using-apache-cordova-3-4-0">very few example usage articles</a>, say:</p>
+
+<p><strong>You don't need either of those two steps when using the Cordova File Plugin.</strong></p>
+
+<p>Only this <a href="http://www.raymondcamden.com/2014/07/15/Cordova-Sample-Reading-a-text-file">collection</a> of <a href="http://www.raymondcamden.com/2014/11/05/Cordova-Example-Writing-to-a-file">example use cases</a> hints at their superfluity.</p>
+
+<p>With the Cordova File Plugin, there are two essential pieces of information to remember:</p>
+
+<ol>
+<li>Like all Cordova plugins, you have to wait for the <code>deviceready</code> event before you try anything,  </li>
+<li>Then, <code>window.resolveLocalFileSystemURL(&lt;path&gt;, &lt;successHandler&gt;, &lt;errorHandler&gt;)</code> is your friend.</li>
+</ol>
+
+<p><code>window.resolveLocalFileSystemURL()</code> returns a <code>FileEntry</code> or <code>DirectoryEntry</code> instance (depending on whether you gave a file or a directory as path as its first parameter), which you can then work with.</p>
+
+<h2 id="readingthecontentsofafile">Reading the Contents of a File</h2>
+
+<p>This the first of the two main use cases, the other one being writing a file. For this example, we assume a plain text file with some JSON in it. It's pretty much the same for any other plain text file, whereas it gets a little more complicated should you wish to read binary data.</p>
+
+<pre><code class="language-javascript">document.addEventListener('deviceready', onDeviceReady, false);
+function onDeviceReady() {
+	function readFromFile(fileName) {
+		var pathToFile = cordova.file.dataDirectory + fileName;
+		window.resolveLocalFileSystemURL(pathToFile, function (fileEntry) {
+			fileEntry.file(function (file) {
+				var reader = new FileReader();
+
+				reader.onloadend = function (e) {
+					return JSON.parse(this.result);
+				};
+
+				reader.readAsText(file);
+			}, errorHandler.bind(null, fileName));
+		}, errorHandler.bind(null, fileName));
+	}
+
+	var data = readFromFile('data.json');
+}
+</code></pre>
+
+<p>Let's have a look at a few of the things going on in this snippet.</p>
+
+<p>Firstly, we wait for the <code>deviceready</code> event. In your app, you have likely done this already way before you start any reading or writing of files, but it's important to remember.</p>
+
+<p>Secondly, we construct a path for <code>window.resolveLocalFileSystemURL()</code> with the magic <code>cordova.file.dataDirectory</code> value that the File Plugin exposes for us. This is one of several values for the various paths your app can access. They are <a href="https://github.com/apache/cordova-plugin-file#where-to-store-files">well documented</a> on the Plugin page. In this case, it's a private data directory within your app's filesystem that won't sync with iCloud. (If you want this iOS only functionality, use <code>cordova.file.syncedDataDirectory</code>.)</p>
+
+<p>Then come a bunch of complicated, confusingly labelled, functions, instances, and event handlers. Essentially though, we're calling <code>readAsText()</code> on our file pointer, after having set up an event handler for the <code>loadend</code> event, which will be triggered when <code>readAsText()</code> reaches the end of the file. Its parameter is the event object, and the <code>this</code> context contains our data in its <code>result</code> property. You can also find it at <code>e.target.result</code>.</p>
+
+<p>Makes you a little jealous of localStorage's <code>getItem()</code> method, doesn't it? :)</p>
+
+<h3 id="whatswiththaterrorhandler">What's With That Error Handler?</h3>
+
+<p>You might have noticed that <code>errorHandler.bind(null, fileName)</code> parameter on two of the function calls. Here is the function, much the same as in the HTML5 Rocks article, with one improvement.</p>
+
+<pre><code class="language-javascript">var errorHandler = function (fileName, e) {
+	var msg = '';
+
+	switch (e.code) {
+		case FileError.QUOTA_EXCEEDED_ERR:
+			msg = 'Storage quota exceeded';
+			break;
+		case FileError.NOT_FOUND_ERR:
+			msg = 'File not found';
+			break;
+		case FileError.SECURITY_ERR:
+			msg = 'Security error';
+			break;
+		case FileError.INVALID_MODIFICATION_ERR:
+			msg = 'Invalid modification';
+			break;
+		case FileError.INVALID_STATE_ERR:
+			msg = 'Invalid state';
+			break;
+		default:
+			msg = 'Unknown error';
+			break;
+	};
+
+	console.log('Error (' + fileName + '): ' + msg);
+}
+</code></pre>
+
+<p>By itself, any error handler you specify is passed an error object as parameter, which holds little more than an error code. We're calling <code>.bind(null, fileName)</code> on the function when we specify it as the error handler, so that its first parameter becomes the filename instead. (The first argument to <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/bind"><code>.bind</code> <br />
+</a> is used for the context, passing <code>null</code> means it will default to the last bound <code>this</code> keyword, in this case <code>window</code>.)</p>
+
+<h2 id="writingtoafile">Writing to a File</h2>
+
+<p>Here then is the other obvious use case: writing some data to a file. In this example, we'll write some JSON. Here is the code:</p>
+
+<pre><code class="language-javascript">document.addEventListener('deviceready', onDeviceReady, false);
+function onDeviceReady() {
+	function writeToFile(fileName, data) {
+		data = JSON.stringify(data, null, '\t');
+		window.resolveLocalFileSystemURL(cordova.file.dataDirectory, function (directoryEntry) {
+			directoryEntry.getFile(fileName, { create: true }, function (fileEntry) {
+				fileEntry.createWriter(function (fileWriter) {
+					fileWriter.onwriteend = function (e) {
+						// for real-world usage, you might consider passing a success callback
+						console.log('Write of file "' + fileName + '"" completed.');
+					};
+
+					fileWriter.onerror = function (e) {
+						// you could hook this up with our global error handler, or pass in an error callback
+						console.log('Write failed: ' + e.toString());
+					};
+
+					var blob = new Blob([data], { type: 'text/plain' });
+					fileWriter.write(blob);
+				}, errorHandler.bind(null, fileName));
+			}, errorHandler.bind(null, fileName));
+		}, errorHandler.bind(null, fileName));
+	}
+
+	writeToFile('example.json', { foo: 'bar' });
+}
+</code></pre>
+
+<p>A lot going on there, let's break it down.</p>
+
+<p>For convenience, we're defining <code>writeToFile()</code> as a re-usable function. We're opening a connection to the dataDirectory, which returns a <code>directoryEntry</code> instance, with - amongst others - a <code>getFile()</code> method. We're calling this method with a filename, and a configuration object that tells the method to create the file if it doesn't exist.</p>
+
+<p>We then call the <code>createWriter()</code> method on the <code>fileEntry</code> instance, which in turn gives us a <code>fileWriter</code> instance (phew). For illustration, I've set up 2 listeners on this instance, but as you can see they're not actually needed in this instance. What we're required to do is to create a new blob and write that to the file.</p>
+
+<p>The first parameter for the Blob constructor is an array with our data as its sole item. This may seem odd in our case, but it is correct. I'll be honest - I've not gone through enough of the Blob spec to figure out why that is. The second argument is a configuration object, with a format type. Here, we specify <code>text/plain</code> (not, say, <code>application/json</code>) because that's what our file will be. Yes, the content will be JSON, but JSON is just plain text, and we're not telling the filesystem to interpret it (like we would if we were to serve it to a browser).</p>
+
+<p>And that's how you write your JSON to a file, and yes, it's rather different from reading a file.</p>
+
+<h2 id="wishfulapi">Wishful API</h2>
+
+<p>We have seen that the File plugin's API and usage is complex. It allows for maximum versatility, but it's also based on defunct specifications, which might have been streamlined had they been examined further. I don't have the know-how to implement this for all the currently supported platforms of this plugin, but here's my suggestion (or wish) for an API that could sit on top on the current one.</p>
+
+<h3 id="writeorappendtoafile">Write or Append to a File</h3>
+
+<pre><code class="language-javascript">cordova.file.write(fileName, { create: true }, successHandler, errorHandler);
+cordova.file.append(fileName, {}, successHandler, errorHandler); // with { create: true }, it would behave as .write() if previously non-existent
+</code></pre>
+
+<h3 id="readafilescontents">Read a File's Contents</h3>
+
+<pre><code class="language-javascript">cordova.file.read(fileName, { type: 'text/plain' }, successHandler, errorHandler);
+</code></pre>
+
+<p>The fileName could either be an absolute path that the developer constructs using the various <code>cordova.file.*</code> locations that the plugin exposes, or, alternatively, be specified as part of the configuration object (the second parameter), e.g. <code>{ basePath: cordova.file.dataDirectory }</code>.</p>
+
+<p>If one were to go down that route, I would additionally suggest being able to specify configuration options globally for an app:</p>
+
+<pre><code class="language-javascript">cordova.file.options({
+	basePath: cordova.file.dataDirectory, // working directory
+	create: true, // always create files
+	type: 'text/plain' // read/write all files as plain text
+});
+</code></pre>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>The code above is the result of several days' of reading documentation, trawling through blog posts, and experimentation. For all I know, I'm still doing some things wrong.</p>
+
+<p>Development in the world of Javascript moves at a rapid pace, and documentation doesn't always keep up. Add to that the fact that many front-end developers are smart, good-looking, and smell nice, and are often deeply involved with the technologies they're using themselves, it can sometimes be hard to break into a particular technology when coming to it for the first time.</p>
+
+<p>I remember a long time ago I was trying to write to a file in PHP. Sure enough, I had to open a pointer/handler to the file, seek around it, and then stream data to disk, before finally releasing the open handler again. Then, a while later, <code>file_put_contents()</code> and <code>file_get_contents()</code> came along and drastically simplified things for 99% of the use cases.</p>
+
+<p>Sure it's nice to have all the power, but when designing APIs, ask yourselves what the main use cases are, and try and make those as easy and intuitive as possible. Then document them well.</p>
+				</div>
+			</article>
+		</div>
+	</section>
+</main>
+
+		<footer>
+			<div>
+				<div>
+					<span>&copy; Neontribe 2015.</span>
+					<span>Share under <a href="http://creativecommons.org/licenses/by-nc/4.0/legalcode">Creative Commons</a>.</span>
+				</div>
+				<figure>
+					<img src="img/neontribe_logo_vintage.svg">
+				</figure>
+				<address>
+					<span>Neontribe</span>
+					<span>21 Colegate, Norwich NR3 1BN</span>
+					<span><a href="mailto:info@neontribe.co.uk">info@neontribe.co.uk</a></span>
+					<span><a href="tel:08456890896">0845 689 0896</a></span>
+				</address>
+			</div>
+		</footer>
+		<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+		<script>
+			var $nav = $('nav#top-nav');
+			var threshold = 40;
+			$(window).scroll(function () {
+				var scroll = $(window).scrollTop();
+				if (scroll >= threshold) {
+					$nav.addClass('alt');
+				} else {
+					$nav.removeClass('alt');
+				}
+			});
+		</script>
+	</body>
+</html>

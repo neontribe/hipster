@@ -334,6 +334,58 @@ header.blog {
 	background-size: cover;
 }
 
+header.post {
+	width: 100%;
+	min-height: 8rem;
+	background-color: #010b4c;
+	background-image: url(../img/bokeh.jpg);
+	background-repeat: no-repeat;
+	background-size: cover;
+	padding: 5rem 2rem 5rem 2rem;
+}
+
+header.post h1 {
+	max-width: 960px;
+	color: #dfefc9;
+	margin: 0 auto;
+	text-shadow: 0 0 3rem #000527;
+}
+
+.meta {
+	text-align: center;
+	margin-top: -2rem;
+}
+
+.meta address {
+	font-style: normal;
+}
+
+.meta address img {
+	max-height: 8rem;
+	border-radius: 50%;
+	box-shadow: 0 0 0 1rem #fafdf7;
+}
+
+.meta address span {
+	display: block;
+}
+
+.meta address > a:before {
+	-webkit-transform: scaleX(1);
+	    -ms-transform: scaleX(1);
+	        transform: scaleX(1);
+	-webkit-transform-origin: 50% 54%;
+	    -ms-transform-origin: 50% 54%;
+	        transform-origin: 50% 54%;
+	border-radius: 50%;
+}
+
+.meta address > a:hover:before, .meta address > a:focus:before, .meta address > a:active:before {
+	-webkit-transform: scale(1.35, 1.35);
+	    -ms-transform: scale(1.35, 1.35);
+	        transform: scale(1.35, 1.35);
+}
+
 /*
  * Main, Sections, and Articles
  */
@@ -443,6 +495,13 @@ figure {
 figure img {
 	max-width: 100%;
 }
+
+pre {
+	max-width: 100%;
+	overflow-x: auto;
+}
+
+pre code {}
 
 /*
  * Media Queries
