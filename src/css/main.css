@@ -656,6 +656,14 @@ code {
 	display: block !important;
 }
 
+.page {
+	p {
+		img {
+			width: 100%;
+		}
+	}
+}
+
 /*
  * Browser Hacks
  */
@@ -670,6 +678,43 @@ code {
 	img[src*=".svg"] {
 		width: 100% !important;
 		height: 100% !important;
+	}
+}
+
+/*
+ * Patch lack of Flexbox support
+ */
+
+.no-flexbox, .no-flexboxlegacy, .no-flexboxtweener {
+	nav#top-nav {
+		display: table;
+
+		ul {
+			display: table-cell;
+
+			li {
+				display: table-cell;
+			}
+		}
+	}
+
+	header.homepage {
+		img {
+			width: 8rem;
+			height: 8rem;
+		}
+	}
+
+	footer {
+		& > div {
+			display: table;
+			width: 100%;
+
+			& > * {
+				display: table-cell;
+				vertical-align: middle;
+			}
+		}
 	}
 }
 
