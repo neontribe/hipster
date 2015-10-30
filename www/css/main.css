@@ -732,7 +732,7 @@ footer img.social {
 	background-color: #dfefc9;
 	width: 8rem;
 	height: 4rem;
-	margin: -2px auto;
+	margin: -4px auto;
 	position: relative;
 }
 
@@ -795,6 +795,10 @@ code {
 	header.homepage p {
 		font-size: 1rem;
 	}
+
+	.process .divider {
+		margin: -8px auto;
+	}
 }
 
 @media (max-width: 600px) {
@@ -826,6 +830,13 @@ code {
 
 	footer > div address {
 		text-align: center;
+	}
+
+	.process .big-blob-container .big-blob {
+		background-position: center 4rem;
+		background-size: 16rem 6rem;
+		padding: 12rem 3rem 3rem 3rem;
+		border-radius: 25%;
 	}
 }
 
