@@ -1,8 +1,7 @@
 /*
- * Fonts
+ * Fonts need to be loaded in HTML head:
+ * <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:400,200,700" type="text/css">
  */
-
-@import url(https://fonts.googleapis.com/css?family=Raleway:400,700,200);
 
 /*
  * Colours & Variables
@@ -685,7 +684,7 @@ code {
  * Patch lack of Flexbox support
  */
 
-.no-flexbox, .no-flexboxlegacy, .no-flexboxtweener {
+.no-flexbox {
 	nav#top-nav {
 		display: table;
 
