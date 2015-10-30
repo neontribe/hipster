@@ -220,7 +220,7 @@ nav#top-nav {
 		}
 
 		li {
-			flex: 1 1 10rem;
+			flex: 1 1 8rem;
 
 			a {
 				display: inline-block;
@@ -667,17 +667,9 @@ code {
  * Browser Hacks
  */
 
-.ie9 img[src*=".svg"] {
+img[src*=".svg"] {
 	width: 100% !important;
 	height: 100% !important;
-}
-
-/* IE10+ */
-@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
-	img[src*=".svg"] {
-		width: 100% !important;
-		height: 100% !important;
-	}
 }
 
 /*
