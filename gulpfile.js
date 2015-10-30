@@ -3,6 +3,10 @@ var postcss = require('gulp-postcss');
 var imagemin = require('gulp-imagemin');
 var concat = require('gulp-concat');
 var minimist = require('minimist');
+var precss = require('precss');
+var autoprefixer = require('autoprefixer');
+var nano = require('gulp-cssnano');
+var uglify = require('gulp-uglify');
 
 var path = {
 	CSS: ['./src/css/prism.css', './src/css/main.css'],
@@ -30,9 +34,10 @@ gulp.task('css', function () {
 	return gulp.src(path.CSS)
 		.pipe(concat('main.css'))
 		.pipe(postcss([
-			require('precss')(),
-			require('autoprefixer')()
+			precss(),
+			autoprefixer({ remove: false, browser: ['> 1%', 'last 3 versions', 'Firefox ESR'] })
 		]))
+		.pipe(nano())
 		.pipe(gulp.dest(path.DEST_DIR + '/css'));
 });
 
@@ -62,6 +67,7 @@ gulp.task('fonts', function () {
 gulp.task('js', function () {
 	return gulp.src(path.JS)
 		.pipe(concat('bundle.js'))
+		.pipe(uglify())
 		.pipe(gulp.dest(path.DEST_DIR + '/js'));
 });
 

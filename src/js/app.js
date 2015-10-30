@@ -19,7 +19,6 @@ $('.big-blob').on('click', 'li a', function(e) {
 	var trigger = $(this);
 	var cypher = trigger.text().toLowerCase().replace(' ','-');
 	blob.attr('data-subprocess', cypher);
-	blob.addClass('red');
 	blob.find('p').hide();
 	$('#'+cypher).show().focus();
 	blob.find('a').removeClass();
