@@ -1,41 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!-- Created with Inkscape (http://www.inkscape.org/) -->
-
-<svg
-   xmlns:dc="http://purl.org/dc/elements/1.1/"
-   xmlns:cc="http://creativecommons.org/ns#"
-   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-   xmlns:svg="http://www.w3.org/2000/svg"
-   xmlns="http://www.w3.org/2000/svg"
-   version="1.1"
-   width="280"
-   height="165"
-   id="svg2">
-  <defs
-     id="defs4" />
-  <metadata
-     id="metadata7">
-    <rdf:RDF>
-      <cc:Work
-         rdf:about="">
-        <dc:format>image/svg+xml</dc:format>
-        <dc:type
-           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
-      </cc:Work>
-    </rdf:RDF>
-  </metadata>
-  <g
-     transform="translate(0,-887.36218)"
-     id="layer1" />
-  <text
-     x="16.267069"
-     y="140.29044"
-     id="text3174"
-     xml:space="preserve"
-     style="font-size:50.80619812px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#cccccc;fill-opacity:1;stroke:none;font-family:DejaVu Sans;-inkscape-font-specification:DejaVu Sans"><tspan
-       x="16.267069"
-       y="140.29044"
-       id="tspan3184"
-       style="font-size:137.57748413px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#cccccc;font-family:Lucida Console;-inkscape-font-specification:Lucida Console">&lt;/&gt;</tspan></text>
+<svg width="198px" height="101px" viewBox="0 0 198 101" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+    <!-- Generator: Sketch 3.4 (15588) - http://www.bohemiancoding.com/sketch -->
+    <title>p_coding</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+        <g id="p_coding" sketch:type="MSLayerGroup" fill="#1B2564">
+            <path d="M0.148011166,58.5814774 L78.6773466,27.8146377 L78.6773466,39.9064088 L14.4566069,64.1571274 L78.6773466,88.4750225 L78.6773466,100.566794 L0.148011166,69.7327774 L0.148011166,58.5814774 Z M109.914422,0.608152799 L120.125251,0.608152799 L88.820999,99.29044 L78.6101701,99.29044 L109.914422,0.608152799 Z M197.24388,69.8671304 L118.714544,100.566794 L118.714544,88.4750225 L182.868107,64.1571274 L118.714544,39.9064088 L118.714544,27.8146377 L197.24388,58.5814774 L197.24388,69.8671304 Z" id="tspan3184" sketch:type="MSShapeGroup"></path>
+        </g>
+    </g>
 </svg>

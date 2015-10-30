@@ -646,10 +646,10 @@ footer img.social {
 	background-color: #dfefc9;
 	background-repeat: no-repeat;
 	background-position: center 2rem;
-	background-size: 16rem;
+	background-size: 16rem 8.5rem;
 	border-radius: 50%;
 	text-align: center;
-	padding: 12rem 2rem 3rem 2rem;
+	padding: 12rem 8rem 3rem 8rem;
 }
 
 .process .big-blob-container .big-blob ul {
@@ -717,15 +717,15 @@ footer img.social {
 }
 
 .process .big-blob-container .big-blob[data-subprocess="launch"] {
-	background-image: url(images/p_launch.svg);
+	background-image: url(../img/process/p_launch.svg);
 }
 
 .process .big-blob-container .big-blob[data-subprocess="measurement"] {
-	background-image: url(images/p_measurement.svg);
+	background-image: url(../img/process/p_measurement.svg);
 }
 
 .process .big-blob-container .big-blob[data-subprocess="improvement"] {
-	background-image: url(images/p_improvement.svg);
+	background-image: url(../img/process/p_improvement.svg);
 }
 
 .process .divider {

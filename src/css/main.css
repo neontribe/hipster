@@ -485,10 +485,10 @@ footer {
 			background-color: $light;
 			background-repeat: no-repeat;
 			background-position: center 2rem;
-			background-size: 16rem;
+			background-size: 16rem 8.5rem;
 			border-radius: 50%;
 			text-align: center;
-			padding: 12rem 2rem 3rem 2rem;
+			padding: 12rem 8rem 3rem 8rem;
 
 			ul {
 				list-style: none;
@@ -555,15 +555,15 @@ footer {
 			}
 
 			&[data-subprocess="launch"] {
-				background-image: url(images/p_launch.svg);
+				background-image: url(../img/process/p_launch.svg);
 			}
 
 			&[data-subprocess="measurement"] {
-				background-image: url(images/p_measurement.svg);
+				background-image: url(../img/process/p_measurement.svg);
 			}
 
 			&[data-subprocess="improvement"] {
-				background-image: url(images/p_improvement.svg);
+				background-image: url(../img/process/p_improvement.svg);
 			}
 		}
 	}
