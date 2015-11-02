@@ -24,3 +24,26 @@ $('.big-blob').on('click', 'li a', function(e) {
 	blob.find('a').removeClass();
 	trigger.addClass('open');
 });
+
+// crude SVG fallback
+if (!Modernizr.svg) {
+	$('img[src*=".svg"]').each(function () {
+		var $this = $(this),
+			replacement = $(this).attr('src').replace('.svg', '.png');
+		$this.attr('src', replacement);
+
+		setTimeout(function () {
+			var theImage = new Image(); // to get the natural size of the image
+			theImage.src = replacement;
+			var imageWidth = theImage.width / 6;
+			var imageHeight = theImage.height / 6;
+
+			$this.width(imageWidth);
+			$this.height(imageHeight);
+			$this.css({
+				'maxWidth': imageWidth + 'px',
+				'maxHeight': imageHeight + 'px'
+			});
+		});
+	});
+}

@@ -12,7 +12,7 @@ var path = {
 	CSS: ['./src/css/prism.css', './src/css/main.css'],
 	IMAGES: './src/img/**/*.{png,jpg,gif,svg}',
 	FONTS: './src/css/fonts/*.{eot,svg,ttf,woff,woff2}',
-	JS: './src/js/**/*.js',
+	JS: ['./src/js/prism.js', './src/js/app.js'],
 	TO_COPY: ['src/*.{html,js,ico,xml,png,json}'],
 	DEST_DIR: './www'
 };
@@ -24,6 +24,8 @@ var path = {
 gulp.task('copy', function () {
 	gulp.src(path.TO_COPY)
 		.pipe(gulp.dest(path.DEST_DIR));
+	return gulp.src('src/js/modernizr.js')
+		.pipe(gulp.dest(path.DEST_DIR + '/js'));
 });
 
 //

@@ -98,6 +98,12 @@ a:not([role="button"]) {
 	}
 }
 
+a {
+	img {
+		border: none;
+	}
+}
+
 /*
  * Buttons
  */
@@ -283,6 +289,7 @@ header.homepage {
 		flex: 1;
 		width: auto;
 		max-height: 50vh;
+		margin: auto;
 	}
 
 	p {
@@ -461,6 +468,7 @@ footer {
 	}
 
 	img.social {
+		max-width: 2rem;
 		max-height: 2rem;
 	}
 }
@@ -665,6 +673,7 @@ code {
 
 /*
  * Browser Hacks
+ * ALl the IEs and Edge need this to respect SVG aspect ratios :|
  */
 
 img[src*=".svg"] {
@@ -706,6 +715,41 @@ img[src*=".svg"] {
 				vertical-align: middle;
 			}
 		}
+	}
+}
+
+/*
+ * Patch lack of rem
+ */
+
+.no-cssremunit {
+	nav#top-nav {
+		li {
+			a {
+				padding: 18px;
+			}
+		}
+	}
+
+	header.homepage, header.page, header.post {
+		padding: 54px;
+	}
+
+	h2 span em {
+		padding: 5px;
+		font-size: 14px;
+	}
+
+	[role="button"], button {
+		padding: 5px 10px;
+	}
+
+	main[role="main"] section>div article img {
+		width: 400px;
+	}
+
+	footer {
+		padding: 54px;
 	}
 }
 
