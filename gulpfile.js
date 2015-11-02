@@ -14,7 +14,8 @@ var path = {
 	FONTS: './src/css/fonts/*.{eot,svg,ttf,woff,woff2}',
 	JS: ['./src/js/prism.js', './src/js/app.js'],
 	TO_COPY: ['src/*.{html,js,ico,xml,png,json}'],
-	DEST_DIR: './www'
+	DEST_DIR: './www',
+	EXPORT_DEST_DIR: '../neontribe-ghost/content/themes/hipster'
 };
 
 //
@@ -96,15 +97,22 @@ gulp.task('default', ['copy', 'css', 'images', 'fonts', 'js'], function () {
 // e.g. gulp export --target ../neontribe-ghost/content/themes/hipster
 //
 
-gulp.task('export', ['build'], function () {
+gulp.task('export', /*['build'],*/ function () {
 	var options = minimist(process.argv.slice(2));
 
 	if (!options.target) {
-		console.error('Must specify target export directory.');
-		return;
+		options.target = path.EXPORT_DEST_DIR;
+		console.log('Using default target directory: ' + path.EXPORT_DEST_DIR);
 	}
 
-	return gulp.src(path.DEST_DIR + '/**/*')
-		.pipe(gulp.dest(options.target));
+	gulp.src('./www/css/main.css').pipe(gulp.dest(options.target + '/assets/css'));
+
+	gulp.src([
+		'./www/img/**/*.{png,jpg,gif,svg}',
+		'!./www/img/harry.jpg',
+		'!./www/img/frank.jpg'
+	]).pipe(gulp.dest(options.target + '/assets/img'));
+
+	return gulp.src('./www/js/*.js').pipe(gulp.dest(options.target + '/assets/js'));
 });
 
