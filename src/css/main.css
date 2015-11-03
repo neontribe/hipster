@@ -902,6 +902,14 @@ img[src*=".svg"] {
 			}
 		}
 	}
+
+	.project {
+		.screenshot {
+			float: none !important;
+			margin: 0 0 1rem 0 !important;
+			max-width: 100%;
+		}
+	}
 }
 
 @media (max-width: 400px) {
