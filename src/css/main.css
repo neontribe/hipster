@@ -671,6 +671,33 @@ code {
 	}
 }
 
+.project {
+	clear: both;
+	margin: 3rem 0;
+	overflow: auto;
+
+	.screenshot {
+		max-width: 50%;
+		float: right;
+		padding: 0.25rem;
+		margin: 0 0 0 1rem;
+		background-color: $light_darker;
+		border-radius: 0.25rem;
+		transition: all 200ms ease;
+
+		&:hover {
+			transform: scale(0.975);
+		}
+	}
+
+	&:nth-of-type(even) {
+		.screenshot {
+			float: left;
+			margin: 0 1rem 0 0;
+		}
+	}
+}
+
 /*
  * Browser Hacks
  * ALl the IEs and Edge need this to respect SVG aspect ratios :|
